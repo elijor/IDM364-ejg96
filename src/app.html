@@ -1,12 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Svelte Test</title>
+		<meta charset="utf-8">
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" >
+		<meta name="viewport" content="width=device-width, initial-scale=1" >
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
+<style>
+	:root {
+		--mainBlack: #111217;
+		--mainWhite: #FFFFFF;
+		--mainRed: #DE2613;
+		--mainBlue: #116B7E;
+
+		--mainPink: #FF4992;
+		--secWhite: #EEEDE8;
+		
+	}
+	@font-face {
+ 	font-family: Barcode;
+  	src: url(/src/lib/assets/fonts/LibreBarcode128Text-Regular.ttf);
+}
+
+	.logo {
+		font-family: Barcode;
+	}
+
+	p {
+		font-family: Verdana;
+		font-size: 18px;
+	}
+	main {
+		padding-top: calc(2em + 82px);
+		background-color: teal;
+	}
+	body {
+		margin: 0;
+	}
+</style>
