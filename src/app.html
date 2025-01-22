@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<script>
+	import BG1 from '$lib/assets/imgs/BG1.png';
+	import BG2 from '$lib/assets/imgs/BG2.png';
+
+</script>
 <html lang="en">
 	<head>
 		<title>Svelte Test</title>
@@ -11,6 +16,8 @@
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
+
+
 <style>
 	:root {
 		--mainBlack: #111217;
@@ -37,9 +44,26 @@
 	}
 	main {
 		padding-top: calc(2em + 82px);
-		background-color: teal;
+		/* background-color: teal; */
+		width: 75em;
+		margin: auto;
 	}
 	body {
 		margin: 0;
+		font-size: 16px;
+		background-image: url("/src/lib/assets/imgs/BG2.png"), url("/src/lib/assets/imgs/BG1.png");
+		background-color: var(--mainBlack);
+
 	}
+
+	@media screen and (max-width: 75em) {
+		body {
+			font-size: 14px;
+		}
+	}
+	/* @media screen and (max-width: 50em) {
+		body {
+			font-size: 12px;
+		}
+	} */
 </style>

@@ -5,7 +5,7 @@
     footer {
         width: 100%;
         background-color: var(--secWhite);
-        padding: 1em;
+        padding: 1em 0;
     }
     footer p {
         display: block;
