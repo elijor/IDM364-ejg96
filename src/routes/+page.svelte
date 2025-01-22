@@ -3,7 +3,7 @@
     let html_string = '<h2> h2 html rip</h2>';
     import Hero from '$lib/Hero.svelte';
 	import Shopdivider from '$lib/ShopDivider.svelte';
-    import ShopDivider from '$lib/ShopDivider.svelte';
+    import ShopDivider from '$lib/Shopdivider.svelte';
 </script>
 <Hero></Hero>
 <Shopdivider></Shopdivider>
