@@ -21,7 +21,11 @@
     div h1 {
         font-family: Verdana;
         text-transform: uppercase;
-        color: var(--mainRed)
+        color: var(--mainRed);
+        position: absolute;
+        right: 0;
+        /* width: 75em; */
+        margin: 0 auto;
     }
     img {
         width: 100%;
