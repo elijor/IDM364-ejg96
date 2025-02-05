@@ -1,7 +1,7 @@
 <script>
          import DividerIMG from '$lib/assets/imgs/divider.png';
 </script>
-
+<div class="entCon">
 <div class="holder">
     <div class="texthold">
         <h1>
@@ -15,8 +15,14 @@
         <img src={DividerIMG} alt="divider"/>
     </div>
 </div>
-
+</div>
 <style>
+.entCon {
+    width: 100%;
+    height: 2em;
+    margin: 5em 0;
+}
+
     div.texthold {
         width: 75em;
         margin: auto;
@@ -26,13 +32,13 @@
     }
     div.texthold div {
         position: absolute;
-        right: -1em;
+        right: 0;
         top: -1.5em;
         height: 3em;
-        width: 16em;
+        width: 18em;
         padding: 1em;
-        background-color: var(--mainBlack);
-        opacity: 80%;
+        /* background-color: var(--mainBlack); */
+        opacity: 90%;
         z-index: 1;
         mix-blend-mode: multiply;
     }
@@ -44,10 +50,11 @@
         left: 0;
         display: flex;
         align-items: center;
-        margin: 5em 0;
+        /* margin: 5em 0; */
     }
     div.texthold h1 {
-        font-family: Verdana;
+        font-family: "notoSans";
+        font-size: 2.25em;
         text-transform: uppercase;
         color: var(--mainRed);
         position: absolute;
@@ -55,7 +62,9 @@
         /* width: 75em; */
         margin: 0 auto;
         z-index: 2;
-        /* padding: 1em; */
+        padding: .75em 1em;
+        background-color: #000000df;
+        top: -.9em;
         /* background-blend-mode: exclusion; */
         /* mix-blend-mode: difference; */
     }
