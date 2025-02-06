@@ -1,5 +1,6 @@
 <script>
-import soupCans from '$lib/assets/imgs/products/WarholSoupCan-2.png';
+// import soupCans from '/products/WarholSoupCan-2.png';
+import happyTears from '$lib/assets/imgs/products/Lichtenstein-2.png';
 
 const colorArray = [
     {Orange: "#234234"}, 
@@ -8,28 +9,29 @@ const colorArray = [
 
 import { products } from '$lib/data/store';
 
+// {#if product.colorVar != null } 
+//                 <div class="colorCon">
+//                     {#each product.colorVar as color}
+                        
+//                         <p> {color} </p>
+//                     {/each}
+//                     <!-- {:else} -->
+//                 </div>
+//                 {/if}
 </script>
 
 	{#each products as product}
 <div class="holder">
-    <img class="prodImg" src="{soupCans}" alt="Skateboard"/>
+    <img class="prodImg" src="src/lib/assets/imgs/products/{product.img}" alt="Skateboard"/>
     <div class="infoPriceCon">
         <div class="infoCon">
             <h3> <a href="/products/{product.id}">
                 {product.title}
             </a>
             </h3>
-   
-                {#if product.colorVar != null } 
-                <div class="colorCon">
-                    {#each product.colorVar as color}
-                        
-                        <p> {color} </p>
-                    {/each}
-                    <!-- {:else} -->
-                </div>
-                {/if}
-    
+
+           
+
             <p>
                <!-- ARTIST YEAR -->
                {product.artist} {product.year}
@@ -56,8 +58,8 @@ import { products } from '$lib/data/store';
         z-index: 2;
         margin: .5em;
         isolation: isolate;
-        mix-blend-mode: screen;
-        z-index: 5;
+  
+        /* z-index: 5; */
     }
     .holder {
         position: relative;
@@ -111,9 +113,9 @@ import { products } from '$lib/data/store';
 
     .infoCon p {
         margin: 1em 0 0 0;
+        font-size: 1em;
 
     }
-
 
     .infoPriceCon > p {
         font-family: "Barcode";
@@ -125,7 +127,7 @@ import { products } from '$lib/data/store';
         color: var(--mainBlack);
         /* background-color: var(--mainWhite); */
         /* background-color: lighten(white, 50%); */
-        background: #FFFFFFE5;
+        background: var(--mainBlue);
         text-transform: uppercase;
         padding: .5em;
         font-size: 2em;
@@ -136,6 +138,10 @@ import { products } from '$lib/data/store';
         margin: 0;
         text-align: right;
         width: fit-content;
-
+        mix-blend-mode: screen;
+    }
+    a {
+        color: var(--secWhite);
+        text-decoration: none;
     }
 </style>
