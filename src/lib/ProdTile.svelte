@@ -1,39 +1,57 @@
 <script>
 import soupCans from '$lib/assets/imgs/products/WarholSoupCan-2.png';
+
+const colorArray = [
+    {Orange: "#234234"}, 
+    {Blue: "#0000FF"},
+    {Black: "#000000"}];
+
+import { products } from '$lib/data/store';
+
 </script>
 
+	{#each products as product}
 <div class="holder">
     <img class="prodImg" src="{soupCans}" alt="Skateboard"/>
     <div class="infoPriceCon">
         <div class="infoCon">
-            <h3>
-                Soup Cans
+            <h3> <a href="/products/{product.id}">
+                {product.title}
+            </a>
             </h3>
-            <div class="colorCon">
-                <!-- COLORS -->
-            </div>
+   
+                {#if product.colorVar != null } 
+                <div class="colorCon">
+                    {#each product.colorVar as color}
+                        
+                        <p> {color} </p>
+                    {/each}
+                    <!-- {:else} -->
+                </div>
+                {/if}
+    
             <p>
                <!-- ARTIST YEAR -->
-                Warhol 1962
+               {product.artist} {product.year}
             </p>
             <p>
                 <!-- SIZE -->
-                8 x 31 in.
+                {product.size}
             </p>
         </div>
         <p class="price">
             <!-- PRICE -->
-             $196.20
+             ${product.price}
         </p>
     </div>
     <div class="offset">
 
     </div>
 </div>
-
+{/each}
 <style>
     .prodImg {
-        height: 36em;
+        height: 30em;
         position: absolute;
         z-index: 2;
         margin: .5em;
@@ -44,7 +62,7 @@ import soupCans from '$lib/assets/imgs/products/WarholSoupCan-2.png';
     .holder {
         position: relative;
         width: 29%;
-        min-height: 40em;
+        min-height: 32em;
         background-color: var(--mainBlack);
         /* outline: 1em var(--mainRed) solid; */
         -webkit-box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
@@ -61,7 +79,7 @@ import soupCans from '$lib/assets/imgs/products/WarholSoupCan-2.png';
         bottom: .5em;
         right: .5em;
         background-color: var(--mainBlack);
-        min-height: 40em;
+        min-height: 32em;
         z-index: 1;
         -webkit-box-shadow:inset 0px 0px 0px .25em var(--secWhite);
         -moz-box-shadow:inset 0px 0px 0px .25em var(--secWhite);
@@ -75,7 +93,7 @@ import soupCans from '$lib/assets/imgs/products/WarholSoupCan-2.png';
         /* width: 100%; */
         display: flex;
         flex-direction: column;
-        height: 36em;
+        height: 28em;
         justify-content: space-between;
     }
     .infoCon {
@@ -116,6 +134,8 @@ import soupCans from '$lib/assets/imgs/products/WarholSoupCan-2.png';
         /* mix-blend-mode: exclusion;
         background-blend-mode: multiply; */
         margin: 0;
-        width: fit-content
+        text-align: right;
+        width: fit-content;
+
     }
 </style>

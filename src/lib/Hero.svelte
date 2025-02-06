@@ -6,7 +6,7 @@
         ARTBOARD
     </span>
     <div class="imgcon">
-        <p> Pop Art, Skating, and Consumerism</p>
+        <p> Modern Art, Skating, and Consumerism</p>
         <img src={HeroIMG} alt="Skateboarder"/>
         <div> &nbsp;</div>
     </div>
@@ -35,6 +35,7 @@
         width: 72%;
         height: max-content;
         bottom: 0;
+
  
     }
     .imgcon > * {
@@ -44,7 +45,11 @@
     .imgcon > img { 
         position: relative;
         right: .5em;
-        
+        /* filter: blur(2px) ; */
+        /* -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+        mask-image:  radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+ */
+
     }
     .imgcon > div {
         background-color: var(--mainRed);

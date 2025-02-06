@@ -5,10 +5,6 @@
 
 <div class="shopContainer">
 <ProdTile></ProdTile>
-<ProdTile></ProdTile>
-<ProdTile></ProdTile>
-<ProdTile></ProdTile>
-<ProdTile></ProdTile>
 </div>
 
 <style>
