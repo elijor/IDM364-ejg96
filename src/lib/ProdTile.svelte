@@ -71,9 +71,9 @@ import { products } from '$lib/data/store';
         -moz-box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
         box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
     }
-    .colorCon {
+    /* .colorCon {
         background-color: var(--mainPink);
-    }
+    } */
 
     .offset {
         width: 100%;

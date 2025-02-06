@@ -2,8 +2,7 @@
   
     let html_string = '<h2> h2 html rip</h2>';
     import Hero from '$lib/Hero.svelte';
-	import Shopdivider from '$lib/ShopDivider.svelte';
-    import ShopDivider from '$lib/Shopdivider.svelte';
+    import Shopdivider from '$lib/Shopdivider.svelte';
 	import ShopSection from '$lib/ShopSection.svelte';
 
     // import Test1 from '$lib/test.svelte';
