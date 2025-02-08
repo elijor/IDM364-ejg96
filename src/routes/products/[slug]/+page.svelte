@@ -12,10 +12,10 @@ $: product = products.find((p) => p.id === (slug));
 {#if product}
 <div class="entireHolder">
     <div class="holderImgs">
-        <img src="/src/lib/assets/imgs/products/{product.img}" alt="{product.title} by {product.artist} Skateboard">
+        <img src="/imgs/products/{product.img}" alt="{product.title} by {product.artist} Skateboard">
         {#if product.moreimgs != null }
             {#each product.moreimgs as moreimg}
-                <img src="/src/lib/assets/imgs/products/{moreimgs}" alt="{product.title} by {product.artist} Skateboard">
+                <img src="/imgs/products/{moreimgs}" alt="{product.title} by {product.artist} Skateboard">
             {/each}
         {:else} 
             <!-- <p> Nothing else </p> -->

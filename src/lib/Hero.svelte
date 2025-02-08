@@ -1,5 +1,5 @@
 <script>
-     import HeroIMG from '$lib/assets/imgs/hero-img.jpg';
+    //  import HeroIMG from '/imgs/hero-img.jpg';
 </script>
 <div class="herocon">
     <span class="logo">
@@ -7,7 +7,7 @@
     </span>
     <div class="imgcon">
         <p> Modern Art, Skating, and Consumerism</p>
-        <img src={HeroIMG} alt="Skateboarder"/>
+        <img src="/imgs/hero-img.jpg" alt="Skateboarder"/>
         <div> &nbsp;</div>
     </div>
 </div>

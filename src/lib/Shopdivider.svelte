@@ -1,5 +1,5 @@
 <script>
-         import DividerIMG from '$lib/assets/imgs/divider.png';
+        //  import DividerIMG from '/imgs/divider.png';
          let props = $props();
 </script>
 <div class="entCon" id="shopSection">
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="holder">
-        <img src={DividerIMG} alt="divider"/>
+        <img src="/imgs/divider.png" alt="divider"/>
     </div>
 </div>
 </div>

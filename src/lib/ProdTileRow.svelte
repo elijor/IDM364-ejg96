@@ -51,7 +51,7 @@ const colorArray = [
 
 <a href="/products/{product.id}">
 <div class="holder"> 
-    <img class="prodImg" src="/src/lib/assets/imgs/products/{product.img}" alt="{product.title} by {product.artist} Skateboard"/>
+    <img class="prodImg" src="/imgs/products/{product.img}" alt="{product.title} by {product.artist} Skateboard"/>
     <!-- <img class="prodImg" src="/src/lib/assets/imgs/products/{`${product.img}?${Date.now()}`}" alt="{product.title} by {product.artist} Skateboard"/> -->
 
     <div class="infoPriceCon">
