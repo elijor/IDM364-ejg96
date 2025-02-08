@@ -23,9 +23,9 @@
     .herocon {
         width: 100%;
         display: flex;
-        margin: 4em auto;
+        margin: 6.5em auto 8em;
         position: relative;
-        height: 30em;
+        height: 32em;
         align-items: center;
     }
     .imgcon {

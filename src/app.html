@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<script>
-	import BG1 from '$lib/assets/imgs/BG1.png';
-	import BG2 from '$lib/assets/imgs/BG2.png';
-
-</script>
 <html lang="en">
 	<head>
 		<title>Svelte Test</title>
@@ -30,21 +25,21 @@
 		
 	}
 	@font-face {
- 	font-family: Barcode;
+ 	font-family: "Barcode";
   	src: url(/src/lib/assets/fonts/LibreBarcode128Text-Regular.ttf);
 }
 @font-face {
- 	font-family: notoSans;
+ 	font-family: "notoSans";
   	src: url(/src/lib/assets/fonts/NotoSans-VariableFont_wdthwght.ttf);
 }
 
 @font-face {
- 	font-family: notoSansItalic;
+ 	font-family: "notoSansItalic";
   	src: url(/src/lib/assets/fonts/NotoSans-Italic-VariableFont_wdthwght.ttf);
 }
 
 	.logo {
-		font-family: Barcode;
+		font-family: "Barcode";
 	}
 
 	p {
@@ -52,7 +47,8 @@
 		font-size: 18px;
 	}
 	main {
-		padding-top: calc(2em + 82px);
+		padding-top: calc(.5em + 114px);
+		/* padding-top: 114px; */
 		/* background-color: teal; */
 		width: 75em;
 		margin: auto;

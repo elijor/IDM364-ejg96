@@ -17,7 +17,8 @@
     width: calc(100% - .5rem);
     /* justify-content: space-between; */
     align-items: center;
-    margin-left: .5em;
+    /* margin-left: .5em; */
+    margin: 5em 0 5em .5em;
 }
 
 </style>

@@ -1,11 +1,12 @@
 <script>
          import DividerIMG from '$lib/assets/imgs/divider.png';
+         let props = $props();
 </script>
-<div class="entCon">
+<div class="entCon" id="shopSection">
 <div class="holder">
     <div class="texthold">
         <h1>
-            Shop Boards
+            {props.textCta}
         </h1>
         <div>
 
@@ -20,7 +21,7 @@
 .entCon {
     width: 100%;
     height: 2em;
-    margin: 5em 0;
+    margin: 8em 0;
 }
 
     div.texthold {
