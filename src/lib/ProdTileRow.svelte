@@ -85,6 +85,7 @@ const colorArray = [
     .display3 {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 4em;
         width: calc(100% - .5rem);
         margin: 5em 0 5em .5em;
@@ -182,4 +183,46 @@ const colorArray = [
         color: var(--secWhite);
         text-decoration: none;
     }
+
+    @media screen and (max-width: 1080px) { 
+        a {
+            max-width: 420px;
+            width: calc(50% - 2em);
+            min-width: 350px;
+        }
+        p,  .infoCon p  {
+            font-size: 125%;
+        }
+        .display3 { 
+          justify-content: space-between;
+          font-size: 16px;
+    }
+    }
+
+    @media screen and (max-width: 850px) { 
+        a {
+            max-width: 420px;
+            width: 90%;
+        }
+        .display3 { 
+         justify-content: center;
+    }
+    }
+
+    @media screen and (max-width: 550px) { 
+        p,  .infoCon p  {
+            font-size: 100%;
+        }
+        .infoPriceCon > p {
+            font-size: 3.5em;
+        }
+      
+    }
+    @media screen and (max-width: 365px) { 
+        a {
+            min-width: 300px;
+        }
+      
+    }
+
 </style>

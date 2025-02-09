@@ -12,6 +12,8 @@
         padding: 1em 0;
         z-index: 5;
         mix-blend-mode: normal;
+        top: 0;
+        max-width: 100vw;
         /* border-bottom: .5em solid var(--mainRed); */
       
     }
@@ -33,6 +35,17 @@
         /* opacity: 50%; */
         /* z-index: -4; */
     }
+    /* @media screen and (max-width: 1080px) {
+        header {
+            top: 0;
+            
+        }
+    } */
+    @media screen and (max-width: 1080px) { 
+        header a {
+        font-size: 4em;
+    }
+}
 
 
 </style>

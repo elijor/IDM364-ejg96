@@ -66,10 +66,57 @@
         padding: .75em 1em;
         background-color: #000000df;
         top: -.9em;
+        text-align: center;
         /* background-blend-mode: exclusion; */
         /* mix-blend-mode: difference; */
     }
     img {
         width: 100%;
     }
+    @media screen and (max-width: 1080px) { 
+        div.texthold h1 {
+            /* right: 50%; */
+            display: block;
+            left: calc(50% - 142.7px);
+            right: calc(50% - 142.7px);
+        }
+    }
+    @media screen and (max-width: 850px) { 
+        div.texthold h1 {
+            /* right: 50%; */
+            display: block;
+            left: calc(50% - 126.8px);
+            right: calc(50% - 126.8px);
+            /* right: unset;
+            left: unset; */
+            font-size: 2em;
+        }
+    }
+    @media screen and (max-width: 600px) { 
+        div.texthold h1 {
+            /* right: 50%; */
+            display: block;
+            left: calc(50% - 95.075px);
+            right: calc(50% - 95.075px);
+            /* right: unset;
+            left: unset; */
+            font-size: 1.5em;
+        }
+        div.holder > .holder{
+            height: 50%;
+        }
+        .holder > img {
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+
+    @media screen and (max-width: 380px)  {
+        .entCon {
+            margin: 6em 0 10em;
+        }
+
+    }
+
+    
 </style>

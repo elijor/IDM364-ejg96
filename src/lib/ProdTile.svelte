@@ -137,4 +137,38 @@ import { products } from '$lib/data/store';
         color: var(--secWhite);
         text-decoration: none;
     }
+
+    @media screen and (max-width: 1080px) { 
+        a {
+            max-width: 420px;
+            width: calc(50% - 2em);
+            min-width: 350px;
+        }
+        p,  .infoCon p  {
+            font-size: 125%;
+        }
+    }
+
+    @media screen and (max-width: 850px) { 
+        a {
+            max-width: 420px;
+            width: 90%;
+        }
+    }
+
+    @media screen and (max-width: 550px) { 
+        p,  .infoCon p  {
+            font-size: 100%;
+        }
+        .infoPriceCon > p {
+            font-size: 3.5em;
+        }
+      
+    }
+    @media screen and (max-width: 365px) { 
+        a {
+            min-width: 300px;
+        }
+      
+    }
 </style>

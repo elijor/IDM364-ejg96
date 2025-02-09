@@ -59,6 +59,7 @@
 		background-image: url("/imgs/BG2.png"), url("/imgs/BG1.png");
 		background-color: var(--mainBlack);
 		min-height: 100vh;
+		overflow-x: hidden;
 
 	}
 
@@ -67,6 +68,21 @@
 			font-size: 14px;
 		}
 	}
+	@media screen and (max-width: 1080px) {
+		main {
+			width: calc(100% - 4em);
+			padding: calc(56px + 2em) 2em 0;
+		}
+
+	}
+	/* @media screen and (max-width: 650px) {
+		main {
+			max-width: 480px;
+		}
+
+	} */
+
+
 	/* @media screen and (max-width: 50em) {
 		body {
 			font-size: 12px;

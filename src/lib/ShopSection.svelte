@@ -20,5 +20,18 @@
     /* margin-left: .5em; */
     margin: 5em 0 5em .5em;
 }
+@media screen and (max-width: 1080px) { 
+    .shopContainer { 
+          justify-content: space-between;
+          font-size: 16px;
+          /* gap: 4em; */
+    }
+    }
+
+    @media screen and (max-width: 850px) { 
+    .shopContainer { 
+         justify-content: center;
+    }
+    }
 
 </style>

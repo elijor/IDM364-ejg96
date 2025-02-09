@@ -62,11 +62,11 @@ $: product = products.find((p) => p.id === (slug));
 <p> 404: Product not found.</p>
 {/if}
 
-<Shopdivider textCta="Shop More Boards"></Shopdivider>
+<Shopdivider textCta="See More"></Shopdivider>
 
 <!-- <p> check it  </p> -->
 <ProdTileRow> </ProdTileRow>
-<ShopButton TextCTA="Shop More"></ShopButton>
+<ShopButton TextCTA="Shop All"></ShopButton>
 
 <style>
 
@@ -165,6 +165,74 @@ $: product = products.find((p) => p.id === (slug));
         box-shadow: unset;
         padding: 0 .25em;
         height: calc(100% - .25em);
+    }
+
+    @media screen and (max-width: 850px) { 
+        .entireHolder {
+            gap: 2em;
+        }
+        .entireHolder > div:first-child {
+            width: 35%;
+        }
+        .entireHolder > div:last-child {
+            width: 65%;
+        }
+    }
+    @media screen and (max-width: 650px) { 
+        
+        .entireHolder {
+            flex-direction: column;
+            align-items: center;
+           
+        }
+        .entireHolder > div:first-child, .entireHolder > div:last-child {
+            width: 100%;
+        }
+        .holderImgs img:first-child {
+            max-height: 30em;
+        
+        }
+        .holderImgs {
+            /* max-width: 420px; */
+            width: 100%;
+        }
+        .textHolder {
+            gap: 3em;
+        }
+        .infoHolder div {
+            flex-direction: column;
+            gap: 3em;
+        }
+        .infoHolder p, .infoHolder h1 {
+            text-align: center;
+           
+        }
+        .infoHolder >  p {
+            font-size: 16px;
+        }
+        .infoHolder > p:last-of-type {
+            text-align: left;
+            font-size: 16px;
+        }
+        h1 {
+            font-size: 32px;
+        }
+    }
+    @media screen and (max-width: 420px) { 
+        button {
+            font-size: 24px;
+        }
+        .buttonHolder {
+            flex-direction: column;
+            gap: 2em;
+            align-items: center;
+        }
+        .quantity {
+            height: 44.5px;
+        }
+        .textHolder > div {
+            gap: 2em;
+        }
     }
 
 </style>
