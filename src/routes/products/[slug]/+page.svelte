@@ -1,15 +1,19 @@
-<script>
-    import { products } from '$lib/data/store';
+<script lang="js">
+    // import { products } from '$lib/data/store';
     import Shopdivider from '$lib/Shopdivider.svelte';
+    import { invalidate } from '$app/navigation';
     import { page } from '$app/stores'; // Import the page store to access route parameters
 	import ProdTileRow from '$lib/ProdTileRow.svelte';
     import ShopButton from '$lib/ShopButton.svelte';
 
-$: slug = $page.params.slug;
-$: product = products.find((p) => p.id === (slug));
+    export let data;
+    const { product } = data;
+
+    console.log("Product:", product);
+
 </script>
 
-{#if product}
+{#if product} 
 <div class="entireHolder">
     <div class="holderImgs">
         <img src="/imgs/products/{product.img}" alt="{product.title} by {product.artist} Skateboard">
@@ -29,7 +33,7 @@ $: product = products.find((p) => p.id === (slug));
             </div>
             <p> {product.artist} {product.year}</p>
             <p> {product.size}</p>
-            <p> Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ipsa sapiente dolorem explicabo voluptate nisi suscipit quam natus quibusdam, adipisci repellendus. Architecto officiis saepe tempora tenetur necessitatibus non numquam mollitia!</p>    
+            <p> {product.description}</p>    
         </div>
         <div class="buttonHolder">
             <div class="quantity">
@@ -62,10 +66,16 @@ $: product = products.find((p) => p.id === (slug));
 <p> 404: Product not found.</p>
 {/if}
 
+
 <Shopdivider textCta="See More"></Shopdivider>
 
 <!-- <p> check it  </p> -->
-<ProdTileRow> </ProdTileRow>
+
+{#if data.randomProducts && data.randomProducts.length > 0}
+    <ProdTileRow products={data.randomProducts} />
+  {/if}
+
+<!-- <ProdTileRow products={randomProducts}/> -->
 <ShopButton TextCTA="Shop All"></ShopButton>
 
 <style>

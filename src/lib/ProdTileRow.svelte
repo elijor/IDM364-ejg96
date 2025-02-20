@@ -1,59 +1,21 @@
 <script>
-    export const ssr = false; // Disable SSR for this component
+    // export const ssr = false; // Disable SSR for this component
 
-const colorArray = [
-    {Orange: "#234234"}, 
-    {Blue: "#0000FF"},
-    {Black: "#000000"}];
+// const colorArray = [
+//     {Orange: "#234234"}, 
+//     {Blue: "#0000FF"},
+//     {Black: "#000000"}];
+ import { goto } from '$app/navigation';
 
-    import { onMount, afterUpdate } from 'svelte';
-    import { products } from '$lib/data/store';
-    import { page } from '$app/stores';
+export let products = [];
 
-
-  // Reactively get the slug from the page store
-  $: slug = $page.params.slug;
-
-  // Find the current product based on the slug
-  $: product = products.find((p) => p.id === (slug));
-
-  // Reactively get the current product ID
-  $: currentProductId = product ? product.id : null;
-
-  // Function to get 3 random products excluding the current product
-  function getRandomProducts(products, currentProductId) {
-    if (!currentProductId) return []; // Guard clause if no current product ID
-
-    // Filter out the current product
-    const filteredProducts = products.filter(
-      (product) => product.id !== currentProductId
-    );
-
-    // Shuffle the filtered array and pick the first 3 items
-    const shuffled = filteredProducts.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 3);
-  }
-
-  // Reactively calculate random products whenever the slug or product changes
-  $: randomProducts = getRandomProducts(products, currentProductId);
-
-  // Client-side only logic
-  onMount(() => {
-    // Add cache-busting query parameter to images
-    randomProducts = randomProducts.map((product) => {
-      return { ...product, img: `${product.img}?${Date.now()}` };
-    });
-  });
 
 </script>
 <div class="display3"> 
-{#each randomProducts as product}
+{#each products as product}
 
-<a href="/products/{product.id}">
-<div class="holder"> 
+<a href="/products/{product.id}" class="holder" data-sveltekit-reload>
     <img class="prodImg" src="/imgs/products/{product.img}" alt="{product.title} by {product.artist} Skateboard"/>
-    <!-- <img class="prodImg" src="/src/lib/assets/imgs/products/{`${product.img}?${Date.now()}`}" alt="{product.title} by {product.artist} Skateboard"/> -->
-
     <div class="infoPriceCon">
         <div class="infoCon">
             <h3> 
@@ -76,8 +38,8 @@ const colorArray = [
     <div class="offset">
 
     </div>
-</div>
 </a>
+<!-- </a> -->
 
 {/each}
 </div>
@@ -110,9 +72,7 @@ const colorArray = [
         -moz-box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
         box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
     }
-    /* .colorCon {
-        background-color: var(--mainPink);
-    } */
+
 
     .offset {
         width: 100%;

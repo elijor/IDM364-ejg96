@@ -1,18 +1,23 @@
 <script lang="js">
-  
-    // let html_string = '<h2> h2 html rip</h2>';
+	// import { products } from '$lib/data/store.js';
     import Hero from '$lib/Hero.svelte';
     import Shopdivider from '$lib/Shopdivider.svelte';
 	import ShopSection from '$lib/ShopSection.svelte';
+    
+    const { data } = $props();
+    const { products } = data;
+    $inspect(data);
 
-    // import Test1 from '$lib/test.svelte';
-    // import Test2 from '$lib/test2.svelte';
 
 </script>
+
+
+
+
 <Hero></Hero>
 
 <Shopdivider textCta="Shop Boards"></Shopdivider>
-<ShopSection></ShopSection>
+<ShopSection products={data.products}></ShopSection>
 <!-- <p>Content <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
 <p> testing</p> -->
 

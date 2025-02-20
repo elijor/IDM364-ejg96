@@ -1,10 +1,16 @@
 <script>
 	import ProdTile from "./ProdTile.svelte";
-
+    export let products = [];
 </script>
 
 <div class="shopContainer">
-<ProdTile></ProdTile>
+    {#if [products.length > 0]}
+        {#each products as product}
+            <ProdTile {product}/>
+        {/each}
+    {:else}
+    <p> No products found</p>
+    {/if}
 </div>
 
 <style>

@@ -5,7 +5,9 @@ const colorArray = [
     {Blue: "#0000FF"},
     {Black: "#000000"}];
 
-import { products } from '$lib/data/store';
+// import { products } from '$lib/data/store';
+
+export let product;
 
 // {#if product.colorVar != null } 
 //                 <div class="colorCon">
@@ -18,7 +20,6 @@ import { products } from '$lib/data/store';
 //                 {/if}
 </script>
 
-	{#each products as product}
 <a href="/products/{product.id}">
 <div class="holder"> 
     <img class="prodImg" src="/imgs/products/{product.img}" alt="{product.title} by {product.artist} Skateboard"/>
@@ -46,7 +47,7 @@ import { products } from '$lib/data/store';
     </div>
 </div>
 </a>
-{/each}
+
 <style>
     .prodImg {
         height: 30em;
