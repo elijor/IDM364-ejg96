@@ -1,6 +1,12 @@
+<script>
+    import CartIcon from "./CartIcon.svelte";
+
+</script>
 <header>
     <a href="/" class="logo"> ARTBOARD </a>
+    <CartIcon></CartIcon>
     <div>&nbsp;</div>
+
 </header>
 
 <style>
@@ -23,6 +29,8 @@
         text-decoration: none;
         text-align: center;
         display: block;
+        width: fit-content;
+        margin: 0 auto;
     }
     header > div { 
         background-color: var(--mainRed);
@@ -32,20 +40,21 @@
         height: .5em;
         width: 100%;
         right: 0;
-        /* opacity: 50%; */
-        /* z-index: -4; */
+
     }
-    /* @media screen and (max-width: 1080px) {
-        header {
-            top: 0;
-            
-        }
-    } */
+
     @media screen and (max-width: 1080px) { 
         header a {
         font-size: 4em;
     }
 }
+    @media screen and (max-width: 500px) { 
+        header a {
+            margin: 0 0 0 2rem;
+            /* top: 1.5em;
+            height: calc(100% - 3em); */
+        }
+        }
 
 
 </style>

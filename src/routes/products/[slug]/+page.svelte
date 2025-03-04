@@ -5,6 +5,9 @@
     import { page } from '$app/stores'; // Import the page store to access route parameters
 	import ProdTileRow from '$lib/ProdTileRow.svelte';
     import ShopButton from '$lib/ShopButton.svelte';
+    import Button from '$lib/Button.svelte';
+    import { cart } from '$lib/data/cart';
+
 
     export let data;
     const { product } = data;
@@ -35,30 +38,7 @@
             <p> {product.size}</p>
             <p> {product.description}</p>    
         </div>
-        <div class="buttonHolder">
-            <div class="quantity">
-                <button type="button">
-                    -
-                    <div>
-                    </div>
-                </button>
-                <button type="button">
-                    1
-                    <div>
-                    </div>
-                </button>
-                <button type="button">
-                    +
-                    <div>
-                    </div>
-                </button>
-            </div>
-            <button type="button">
-                Add to Cart
-                <div>
-                </div>
-            </button>
-        </div>
+        <Button {product}/>
     </div>
 </div>
 
@@ -142,40 +122,7 @@
         position: relative;
         top: -.25em;
     }
-    .buttonHolder {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-    }
-    button {
-        font-family: "notoSansItalic";
-        font-size: 2em;
-        font-weight: bold;
-        text-transform: uppercase;
-        padding: .25em .75em;
-        -webkit-box-shadow: inset 0px 0px 0px 4px var(--mainPink) ;
-        box-shadow: inset 0px 0px 0px 4px var(--mainPink);
-        border: unset;
-        position: relative;
-        margin: 0 .25em .25em 0;
-    }
-    button > div {
-        width: 100%;
-        height: 100%;
-        background-color: var(--mainBlue);
-        position: absolute;
-        top: .25em;
-        left: .25em;
-        z-index: -2;
 
-    }
-    .quantity button {
-        -webkit-box-shadow: unset;
-        box-shadow: unset;
-        padding: 0 .25em;
-        height: calc(100% - .25em);
-    }
 
     @media screen and (max-width: 850px) { 
         .entireHolder {
