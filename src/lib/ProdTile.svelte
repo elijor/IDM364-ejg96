@@ -20,7 +20,7 @@ export let product;
 //                 {/if}
 </script>
 
-<a href="/products/{product.id}">
+<a href="/products/{product.id}" data-sveltekit-reload>
 <div class="holder"> 
     <img class="prodImg" src="/imgs/products/{product.img}" alt="{product.title} by {product.artist} Skateboard"/>
     <div class="infoPriceCon">
@@ -55,7 +55,7 @@ export let product;
         z-index: 2;
         margin: .5em;
         isolation: isolate;
-  
+        transition: all .25s;
         /* z-index: 5; */
     }
    a {
@@ -67,6 +67,9 @@ export let product;
         -webkit-box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
         -moz-box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
         box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
+        color: var(--secWhite);
+        text-decoration: none;
+        transition: all .25s;
     }
 
     .offset {
@@ -80,6 +83,7 @@ export let product;
         -webkit-box-shadow:inset 0px 0px 0px .25em var(--secWhite);
         -moz-box-shadow:inset 0px 0px 0px .25em var(--secWhite);
         box-shadow:inset 0px 0px 0px .25em var(--secWhite);
+        transition: all .25s;
     }
 
     .infoPriceCon {
@@ -91,6 +95,7 @@ export let product;
         flex-direction: column;
         height: 28em;
         justify-content: space-between;
+        transition: all .25s;
     }
     .infoCon {
         z-index: 3;
@@ -127,17 +132,70 @@ export let product;
         padding: .5em;
         font-size: 2em;
         font-family: "notoSansItalic";
-        display: inline-block;
+        display: inline;
         margin: 0;
         text-align: right;
+        overflow:hidden;
         width: fit-content;
         mix-blend-mode: screen;
         background-blend-mode: screen;
+
     }
-    a {
-        color: var(--secWhite);
-        text-decoration: none;
+    .holder {
+        position: relative;
     }
+
+    /* HOVER STATES */
+    a:hover {
+        -webkit-box-shadow:inset 0px 0px 0px .5em var(--mainPink);
+        -moz-box-shadow:inset 0px 0px 0px .5em var(--mainPink);
+        box-shadow:inset 0px 0px 0px .5em var(--mainPink);
+        background-color: var(--mainPink);
+        transition: all .5s;
+
+    }
+    a:hover .offset {
+        bottom: .25rem;
+        right: 1rem;
+        transition: all .25s;
+    }
+
+    a:hover .infoPriceCon {
+        padding: 0 3em 3em 0;
+        transition: all .25s;
+    }
+
+    a:hover .prodImg {
+        margin: -.5em 0 0 0 ;
+        transition: all .25s;
+    }
+
+    /* BUTTON PRESSED ACTIVE STATE */
+    
+    a:active {
+        -webkit-box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
+        -moz-box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
+        box-shadow:inset 0px 0px 0px .5em var(--mainBlue);
+        background-color: var(--mainBlue);
+        transition: all .5s;
+    }
+
+    a:active .offset {
+        bottom: -2em;
+        right: -.25em;
+        transition: all .25s;
+    }
+
+    a:active .infoPriceCon {
+        padding: 2.25em .25em 0 0;
+        transition: all .25s;
+    }
+
+    a:active .prodImg {
+        margin: 1em 0 0 1em ;
+        transition: all .25s;
+    }
+
 
     @media screen and (max-width: 1080px) { 
         a {

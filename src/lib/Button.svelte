@@ -56,19 +56,23 @@
             </div>
         </button>
     </div>
-    <button on:click={addToCart} type="button">
+    <div class="add">
+      <button on:click={addToCart} type="button">
         Add to Cart
         <div>
         </div>
     </button>
+    </div>
+    
 </div>
 
 <style>
-        .buttonHolder {
+    .buttonHolder {
         display: flex;
         flex-direction: row;
         width: 100%;
         justify-content: space-between;
+        align-items: end;
     }
     button {
         font-family: "notoSansItalic";
@@ -80,7 +84,12 @@
         box-shadow: inset 0px 0px 0px 4px var(--mainPink);
         border: unset;
         position: relative;
-        margin: 0 .25em .25em 0;
+        margin: 0 .125em .125em 0;
+      
+    }
+
+    .add button, .add button > div {
+      transition: all .2s ;
     }
     button > div {
         width: 100%;
@@ -90,15 +99,53 @@
         top: .25em;
         left: .25em;
         z-index: -2;
-
+   
+    }
+    .quantity {
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
     }
     .quantity button {
         -webkit-box-shadow: unset;
         box-shadow: unset;
-        padding: 0 .25em;
-        height: calc(100% - .25em);
+        padding: .25em;
+        /* height: calc(100% - .25em); */
     }
 
+    /* HOVER STATE */
+    .add:hover button {
+      cursor: pointer;
+      -webkit-box-shadow: inset 0px 0px 0px 4px var(--mainBlue) ;
+      box-shadow: inset 0px 0px 0px 4px var(--mainBlue);
+      margin: 0 .5em .5em 0;
+      /* font-size: 2.25em; */
+      /* background-color: black; */
+      color: var(--mainBlue);
+      transition: all .2s ;
+
+    }
+    .add:hover button > div, .add button:hover > div {
+      background-color: var(--mainPink);
+      cursor: pointer;
+      top: .5em;
+      left: .5em;
+      transition: all .2s ;
+    }
+
+   
+
+    /* BUTTON PRESSED ACTIVE */
+    .add button:active {
+      cursor: pointer;
+      margin: 0 0 0 0;
+      transition: all .2s ;
+    }
+    .add button:active > div, .add button > div:active { 
+      top: 0;
+      left: 0;
+      transition: all .2s ;
+    }
 
     @media screen and (max-width: 420px) { 
         button {
