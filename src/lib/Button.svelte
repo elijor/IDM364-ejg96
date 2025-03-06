@@ -38,23 +38,27 @@
 
 <div class="buttonHolder">
     <div class="quantity">
+      <div class="add">
         <button on:click={decreaseQuantity} 
-        disabled={quantity <= 1} type="button">
+        disabled={quantity <= 1} type="button" class="addless">
             -
             <div>
             </div>
         </button>
+      </div>
         <button type="button">
             {quantity}
             <div>
             </div>
         </button>
-        <button on:click={increaseQuantity} 
-        disabled={quantity >= 9} type="button" >
-            +
-            <div>
-            </div>
-        </button>
+        <div class="add">
+          <button on:click={increaseQuantity} 
+          disabled={quantity >= 9} type="button" class="addless">
+              +
+              <div>
+              </div>
+          </button>
+      </div>
     </div>
     <div class="add">
       <button on:click={addToCart} type="button">
@@ -65,6 +69,7 @@
     </div>
     
 </div>
+
 
 <style>
     .buttonHolder {
@@ -104,7 +109,10 @@
     .quantity {
       display: flex;
       flex-direction: row;
-      gap: 1em;
+      width: 35%;
+      /* gap: 2em; */
+      justify-content: space-between;
+        align-items: end;
     }
     .quantity button {
         -webkit-box-shadow: unset;
@@ -112,9 +120,17 @@
         padding: .25em;
         /* height: calc(100% - .25em); */
     }
+    .add {
+      height: calc(auto + .25em);
+      width: calc(auto + .25em);
+
+    }
 
     /* HOVER STATE */
-    .add:hover button {
+    .add:hover {
+      cursor: pointer;
+    }
+    .add:hover button{
       cursor: pointer;
       -webkit-box-shadow: inset 0px 0px 0px 4px var(--mainBlue) ;
       box-shadow: inset 0px 0px 0px 4px var(--mainBlue);
@@ -123,7 +139,6 @@
       /* background-color: black; */
       color: var(--mainBlue);
       transition: all .2s ;
-
     }
     .add:hover button > div, .add button:hover > div {
       background-color: var(--mainPink);

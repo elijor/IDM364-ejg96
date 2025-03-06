@@ -3,7 +3,10 @@
 	<head>
 		<title>Svelte Test</title>
 		<meta charset="utf-8">
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" >
+		<link rel="icon" href="%sveltekit.assets%/favicon1.svg" type="image/x-icon">
+		<link rel="icon" href="%sveltekit.assets%/favicon1w.svg" type="image/x-icon" media="(prefers-color-scheme:light)" >
+		<link rel="icon" href="%sveltekit.assets%/favicon1.svg" type="image/x-icon" media="(prefers-color-scheme:dark)" >
+
 		<meta name="viewport" content="width=device-width, initial-scale=1" >
 		%sveltekit.head%
 	</head>
@@ -52,6 +55,7 @@
 		/* background-color: teal; */
 		width: 75em;
 		margin: auto;
+		min-height: calc(100vh - 104px - 4.5em);
 	}
 	body {
 		margin: 0;

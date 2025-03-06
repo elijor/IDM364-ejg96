@@ -1,7 +1,10 @@
 <script>
     	import { cart } from "$lib/data/cart";
-        import ShopButton from "./ShopButton.svelte";
-    
+      import ShopButton from "./ShopButton.svelte";
+      import ProdTileRow from '$lib/ProdTileRow.svelte';
+      import Shopdivider from "./Shopdivider.svelte";
+      import { onMount } from 'svelte';
+      import { error } from '@sveltejs/kit';
     // Function to update quantity in the cart
     function updateQuantity(product, newQuantity) {
       // Ensure quantity is within bounds (1-9)
@@ -32,21 +35,85 @@
     
     // Calculate total price
     $: totalPrice = $cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  let deleteicon = "/deleteicon.svg";
-  let arrowicon = "/arrow.svg";
-  </script>
-  
-  <div class="cart-page">
-    <h1>Your Cart</h1>
+    
+    let deleteicon = "/deleteicon.svg";
+    let arrowicon = "/arrow.svg";
+    let emptycart = "/imgs/emptycart.png";
+
+    // let allProducts = [];
+    // let randomProducts = [];
+    export let products = [];
+    let randomProducts = [];
+
+    $: allProducts = products;
+
+    async function fetchProducts() {
+  // If products are already passed as props, just update randomProducts
+  if (allProducts.length > 0) {
+    updateRandomProducts();
+  }
+  // You could add fallback fetching logic here if needed
+}
+
+
+// Function to update random products based on cart contents
+function updateRandomProducts() {
+        if ($cart.length === 0) {
+            // Scenario 1: Cart is empty, show any 3 random products
+            randomProducts = getRandomProducts(allProducts, 3);
+        } else {
+            // Scenario 2: Filter out products that are in the cart
+            const cartProductIds = $cart.map(item => item.id);
+            const availableProducts = allProducts.filter(product => !cartProductIds.includes(product.id));
+            randomProducts = getRandomProducts(availableProducts, 3);
+        }
+    }
+    
+    // Helper function to get n random products from an array
+    function getRandomProducts(productsArray, count) {
+        // Create a copy to avoid modifying the original array
+        const shuffled = [...productsArray];
+        
+        // Fisher-Yates shuffle algorithm
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        
+        // Return the first 'count' products
+        return shuffled.slice(0, count);
+    }
+    
+    // Reactive statement to update random products when cart changes
+    $: {
+        if (allProducts.length > 0) {
+            updateRandomProducts();
+        }
+    }
+    
+    // Fetch products on component mount
+    // onMount(fetchProducts);
+
+    </script>
+
     
     {#if $cart.length === 0}
+    <div class="cart-page">
+      <h1>Your Cart</h1>
+    <div class="emptyCartCon">
       <p>Your cart is currently empty</p>
-      <!-- <img src=""/> -->
+      <img src="{emptycart}" alt=" cart with black transparent skateboard in it" />
+       </div>
+       </div>
+      <Shopdivider textCta="Shop Boards"></Shopdivider>
+      {#if randomProducts.length > 0}
+        <ProdTileRow products={randomProducts} />
+      {/if}
       <ShopButton TextCTA="Shop All"></ShopButton>
-      <p>
-
-      </p>
+      
     {:else}
+    <div class="cart-page">
+      <h1>Your Cart</h1>
       <div class="cartCon">
       <div class="cart-items">
         {#each $cart as item}
@@ -122,10 +189,7 @@
             <h3>Total:</h3>
             <span>${(totalPrice*(1.08)).toFixed(2)}</span>
           </div>
-          
-          <!-- <button class="checkout-btn">
-            Proceed to Checkout
-          </button> -->
+
 
           <button class="checkout-btn">
           Checkout
@@ -135,10 +199,15 @@
           </button>
         </div>
         </div>
-    
+      </div>
     </div>
+    <Shopdivider textCta="More Boards"></Shopdivider>
+      {#if randomProducts.length > 0}
+        <ProdTileRow products={randomProducts} />
+      {/if}
+      <ShopButton TextCTA="Shop All"></ShopButton>
     {/if}
-  </div>
+
   
 
 <style>
@@ -362,6 +431,20 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: left;
+    }
+
+    /* EMPTY CART */
+    .emptyCartCon {
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+    }
+    .emptyCartCon img {
+      width: 40%;
+      margin: 0 auto;
     }
 
 
