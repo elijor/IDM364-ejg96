@@ -5,6 +5,8 @@
       import Shopdivider from "./Shopdivider.svelte";
       import { onMount } from 'svelte';
       import { error } from '@sveltejs/kit';
+      import { goto } from '$app/navigation'; // Import goto for navigation
+
     // Function to update quantity in the cart
     function updateQuantity(product, newQuantity) {
       // Ensure quantity is within bounds (1-9)
@@ -32,6 +34,14 @@
     function removeFromCart(productId) {
       cart.removeItem(productId);
     }
+
+    function handleCheckout() {
+      // Clear the cart (this assumes your cart store has a clear() method)
+      cart.clearCart();
+      
+      // Navigate to the order confirmed page
+      goto('/order-confirmed');
+    }
     
     // Calculate total price
     $: totalPrice = $cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -40,8 +50,6 @@
     let arrowicon = "/arrow.svg";
     let emptycart = "/imgs/emptycart.png";
 
-    // let allProducts = [];
-    // let randomProducts = [];
     export let products = [];
     let randomProducts = [];
 
@@ -132,23 +140,29 @@ function updateRandomProducts() {
               <div class="item-actions">
                 <div class="buttonHolder">
                   <div class="quantity">
-                    <button 
-                    on:click={() => decreaseQuantity(item)} 
-                    disabled={item.quantity <= 1} 
-                    class="quantity-btn"
-                  >
-                    -
+                    <div class="add">
+                      <button 
+                      on:click={() => decreaseQuantity(item)} 
+                      disabled={item.quantity <= 1} 
+                      class="quantity-btn"
+                    >
+                    <span> - </span>
                     <div></div>
                   </button>
-                  <span class="quantity-display">{item.quantity}<div></div></span>
+                </div>  
+                  <button>
+                    <span class="quantity-display">{item.quantity}</span>
+                    <div></div>
+                  </button>
+                <div class="add">
                     <button 
                     on:click={() => increaseQuantity(item)} 
                     disabled={item.quantity >= 9} 
-                    class="quantity-btn"
-                  >
-                    +
+                    class="quantity-btn">
+                  <span>+</span>
                     <div></div>
                   </button>
+                </div>
                   </div>
                   
                 </div>
@@ -160,13 +174,18 @@ function updateRandomProducts() {
               <div class="item-total">
                 ${(item.price * item.quantity).toFixed(2)}
               </div>
+              <div class="add">
               <button 
               on:click={() => removeFromCart(item.id)} 
               class="remove-btn">
-              <img src={deleteicon} alt="delete from cart"/>
-              Remove
+              <span>
+                <img src={deleteicon} alt="delete from cart"/>
+                Remove
+              </span>
+              
               <div></div>
               </button>
+            </div>
               
             </div>
           </div>
@@ -190,13 +209,16 @@ function updateRandomProducts() {
             <span>${(totalPrice*(1.08)).toFixed(2)}</span>
           </div>
 
-
-          <button class="checkout-btn">
-          Checkout
-          <img src={arrowicon} alt="proceed to checkout"/>
-
-          <div></div>
-          </button>
+          <div class="add">
+            <button class="checkout-btn" on:click={handleCheckout}>
+              <span>
+                Checkout
+                <img src={arrowicon} alt="proceed to checkout"/>
+              </span>
+              <div></div>
+              </button>
+          </div>
+        
         </div>
         </div>
       </div>
@@ -218,6 +240,8 @@ function updateRandomProducts() {
         font-family: "notoSansItalic";
         text-transform: uppercase;
         font-size: 3em;
+        text-align: center;
+        margin-bottom: 0;
     }
     h3 {
       font-family: "notoSansItalic";
@@ -259,18 +283,22 @@ function updateRandomProducts() {
       /* width: calc(100% - 11em); */
       position: relative;
       margin: 4em 0;
+      height: 275px;
+      /* max-height: 350px; */
     }
-    .cart-item > img{
+    .cart-item > img {
       /* max-width: 12%; */
-      height: 150%;
+      height: 160%;
+      max-height: 400px;
       position: absolute;
-      top: -25%;
+      top: -15%;
       left: 1.5em;
     }
     .item-details {
       display: flex;
       flex-direction: column;
-      gap: 4em;
+      justify-content: space-between;
+      /* gap: 4em; */
 
     }
     .item-details .namedetails {
@@ -328,7 +356,7 @@ function updateRandomProducts() {
       flex-direction: column;
     }
 
-    .cart-summary > div, .cart-summary > h2{
+    .cart-summary > div:not(.add), .cart-summary > h2{
       display: flex;
       flex-direction: row;
       width: calc(100% - 2rem);
@@ -343,7 +371,7 @@ function updateRandomProducts() {
       justify-content: center;
     }
 
-    .cart-summary > button {
+    .cart-summary > .add {
       width: calc(100% - 2em);
       margin: 1rem auto 1.5rem;
       display: flex;
@@ -353,72 +381,196 @@ function updateRandomProducts() {
       justify-content: center;
     }
 
-    .cart-summary span {
+    .cart-summary > div > span {
       font-family: "notoSansItalic";
       font-weight: 600;
       font-size: 1.25rem;
       color: #F5F5F5DD;
+    }
+    .cart-summary .subtotal h3, .cart-summary .tax h3 {
+      font-size: 1rem;
     }
     .cart-summary .total span {
       font-size: 1.5rem;
       color: white;
       font-weight: bold;
     }
+    .cart-summary .total h3 {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
 
     /* QUANTITY BUTTONS */
+
     .buttonHolder {
         display: flex;
         flex-direction: row;
         width: 100%;
         justify-content: space-between;
+        align-items: end;
+        height: fit-content;
+    
     }
-    .buttonHolder .quantity-btn, .buttonHolder .quantity-display, .leftside .remove-btn, .checkout-btn  {
-        font-family: "notoSansItalic";
-        font-size: 2em;
-        font-weight: bold;
-        text-transform: uppercase;
-        
-        -webkit-box-shadow: inset 0px 0px 0px 4px var(--mainPink) ;
-        box-shadow: inset 0px 0px 0px 4px var(--mainPink);
-        border: unset;
-        position: relative;
-        margin: 0 .25em .25em 0;
-        padding: .5em .5em ;
-        font-size: 1.5em;
+
+    button {
+      /* width: calc(100% + .5em); */
+      height: fit-content;
+      /* margin: 0 .5em .5em 0; */
+      padding: 0 .5em .5em 0;
+      border: none;
+      background-color: transparent;
+      position: relative;
+      transition: all .2s ;
+
     }
-    .remove-btn {
+    button:disabled span {
+      background-color: #FFFFFF80;
+    }
+
+    button span {
+      background-color: white;
+      font-size: 2em;
+      font-family: "notoSansItalic";
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: .5em .5em;
+      -webkit-box-shadow: inset 0px 0px 0px 4px var(--mainPink) ;
+      box-shadow: inset 0px 0px 0px 4px var(--mainPink);
+      border: unset;
+      position: relative;
+      height: fit-content;
+      display: block;
+      transition: all .2s ;
+      animation: movedown .2s ease-in-out;
+    }
+
+    @keyframes movedown {
+  from {
+    right: .25em;
+    bottom: .25em; 
+  }
+
+  to {
+    right: 0;
+    bottom: 0;
+  }
+      
+    }
+
+    .add button:not(:disabled) span { 
+      right: unset;
+      bottom: unset;
+      transition: all .2s ;
+    }
+
+    .add button, .add button > div, .add button span {
+      transition: all .2s ;
+    }
+    button > div {
+        width: calc(100% - .5em);
+        height: calc(100% - .5em);;
+        background-color: var(--mainBlue);
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: -2;
+    }
+    .quantity {
+      display: flex;
+      flex-direction: row;
+      /* width: 35%; */
+      gap: 1em;
+      justify-content: space-between;
+        align-items: end;
+        height: fit-content;
+    }
+    .add {
+      height: fit-content;
+    }
+
+    /* HOVER STATE */
+    .add:hover {
+      cursor: pointer;
+      transition: all .2s ;
+    }
+    .add:hover button:not(:disabled){
+      cursor: pointer;
+      transition: all .2s ;
+    }
+
+    .add:hover button:not(:disabled) span { 
+      right: .25em;
+      bottom: .25em;
+      
+      animation: moveup .2s ease-in-out;
+    }
+
+    @keyframes moveup {
+  from {
+    right: 0;
+    bottom: 0;
+  }
+
+  to {
+    right: .25em;
+    bottom: .25em;
+  }
+}
+
+    .add:hover button:not(:disabled) > div, .add button:not(:disabled):hover > div {
+      background-color: var(--mainPink);
+      cursor: pointer;
+      top: .5em;
+      left: .5em;
+      transition: all .2s ;
+    }
+
+    .quantity .add:hover button:not(:disabled){ 
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+   
+
+    /* BUTTON PRESSED ACTIVE */
+    .quantity .add button:active {
+      cursor: pointer;
+      transition: all .2s ;
+    }
+
+    .add button:not(:disabled):active span { 
+      right: -.25em;
+      bottom: -.25em;
+      
+      animation: pressdown .25s ease-in-out;
+    }
+
+    @keyframes pressdown {
+  from {
+    right: .25em;
+    bottom: .25em;
+  }
+
+  to {
+    right: -.25em;
+    bottom: -.25em;
+  }
+}
+
+    .remove-btn > span {
       width: max-content;
       display: flex;
       flex: row;
       justify-content: center;
       align-items: center;
       gap: .5rem;
+      font-weight: 500;
       /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
-      color: var(--mainPink);
+    
     }
 
     .remove-btn img {
       height: 100%;
-    }
-
-    .quantity-display {
-      background-color: white;
-    }
-    .quantity-btn {
-        -webkit-box-shadow: unset;
-        box-shadow: unset;
-        padding: 0 .25em;
-        height: calc(100% - .25em);
-    }
-    .quantity-btn > div, .quantity-display > div, .remove-btn div, .checkout-btn div {
-        width: 100%;
-        height: 100%;
-        background-color: var(--mainBlue);
-        position: absolute;
-        top: .25em;
-        left: .25em;
-        z-index: -2;
-
     }
 
     .cart-item .item-total {
