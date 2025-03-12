@@ -262,7 +262,7 @@ function updateRandomProducts() {
       width: 70%;
       display: flex;
       flex-direction: column;
-      gap: 2em;
+      /* gap: 2em; */
     
     }
 
@@ -292,7 +292,7 @@ function updateRandomProducts() {
       max-height: 400px;
       position: absolute;
       top: -15%;
-      left: 1.5em;
+      left: 1rem;
     }
     .item-details {
       display: flex;
@@ -461,6 +461,10 @@ function updateRandomProducts() {
       right: unset;
       bottom: unset;
       transition: all .2s ;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: .25rem;
     }
 
     .add button, .add button > div, .add button span {
@@ -571,6 +575,10 @@ function updateRandomProducts() {
 
     .remove-btn img {
       height: 100%;
+    }
+
+    .item-total {
+      text-align: right;
     }
 
     .cart-item .item-total {
