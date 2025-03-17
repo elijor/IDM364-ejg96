@@ -109,11 +109,14 @@
             object-fit: cover;
             height: 100%;
         }
+        .entCon {
+            margin: 6em;
+        }
     }
 
     @media screen and (max-width: 380px)  {
         .entCon {
-            margin: 6em 0 10em;
+            margin: 5em 0;
         }
 
     }

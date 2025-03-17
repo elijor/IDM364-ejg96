@@ -23,7 +23,7 @@
       margin: 0;
       height: calc(100% - 4em);
       transform: scale(1);
-      transition: all .25;
+      transition: all .25s;
 
     }
     
@@ -41,14 +41,14 @@
       border-radius: 50%;
       display: inline-block;
       mix-blend-mode:multiply;
-      animation: pulse 0.35s ease-in-out;
+      animation: pulse 0.25s ease-in-out;
   }
   
   @keyframes pulse {
     0% {
       transform: scale(0);
     }
-    60% {
+    50% {
       transform: scale(1.3);
     }
     100% {
@@ -60,7 +60,7 @@
   .cart-icon-container:hover {
     animation: hoverSimple 0.25s ease-in-out;
     transform: scale(1.2);
-    transition: transform .25;
+    transition: transform .25s;
   }
 
   /* BUTTON PRESS */
@@ -74,7 +74,7 @@
     0% {
       transform: scale(1);
     }
-    60% {
+    50% {
       transform: scale(1.45);
     }
     100% {
@@ -86,7 +86,7 @@
     0% {
       transform: scale(1.25);
     }
-    60% {
+    50% {
       transform: scale(.75);
     }
     100% {

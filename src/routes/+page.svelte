@@ -9,13 +9,6 @@
     $inspect(data);
 
 </script>
-
-
-
-
 <Hero></Hero>
-
 <Shopdivider textCta="Shop Boards"></Shopdivider>
 <ShopSection products={data.products}></ShopSection>
-<!-- <p>Content <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-<p> testing</p> -->

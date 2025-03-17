@@ -12,29 +12,35 @@
 
 <style>
     span.logo {
-        font-size: 20em;
+        font-size: 18em;
         color: var(--mainWhite);
         z-index: 1;
         mix-blend-mode: difference;
         height: max-content;
+        position: absolute;
+        left: 0;
+        margin-left: calc((100% - 75rem) / 2);
+        margin-bottom: 8rem;
+
     }
     .herocon {
-        width: 100%;
+        font-size: 16px;
+        width: 100vw;
         display: flex;
-        margin: 6.5em auto 8em;
-        position: relative;
-        height: 32em;
-        align-items: center;
+        margin: 0 0 8em 0;
+        margin-left: calc((75em - 100vw) / 2);
+        /* position: relative; */
+        height: fit-content;
+        max-height: 65vh;
+        align-items: end;
+        justify-content: end;
+        flex-direction: row;
+        left: 0;
     }
     .imgcon {
-        position: absolute;
-        right: 0;
-        z-index: 0;
-        width: 72%;
-        height: max-content;
-        bottom: 0;
-
- 
+        position: relative;
+        width: 100%;
+         right: 0;
     }
     .imgcon > * {
         width: 100%;
@@ -42,17 +48,13 @@
     }
     .imgcon > img { 
         position: relative;
-        right: .5em;
-        /* filter: blur(2px) ; */
-        /* -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
-        mask-image:  radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
- */
+        color: var(--mainBlue);
 
     }
     .imgcon > div {
-        background-color: var(--mainRed);
+        background-color: var(--mainBlue);
         position: absolute;
-        top: .5em;
+        top: .25em;
         left: 0;
         z-index: -1;
         height: 100%;
@@ -60,6 +62,9 @@
     }
     .imgcon > p {
         position: absolute;
+        margin: 0;
+        margin-right: calc((100vw - 75rem) / 2);
+        /* top: calc(104px + 1rem + 30vh); */
         bottom: 0;
         right: 0;
         text-align: right;
@@ -68,89 +73,104 @@
         font-family: Verdana;
         font-style: italic;
         font-weight: 600;
-        margin: 0;
         mix-blend-mode: difference;
         z-index: 3;
-        right: .5em;
+        width: unset;
+    }
+
+    @media screen and (max-width: 78em) {
+        .herocon {
+            font-size: 14px;
+        }
+        .herocon span.logo {
+            margin-left: calc((100% - 1050px) / 2);
+
+        }
+        .imgcon > p {
+            margin-right: calc((100vw - 1050px) / 2);
+
+        }
     }
     @media screen and (max-width: 1080px) {
-        
+ 
         .herocon {
-            position: relative;
-            top: calc(56px + 2em);
-            left: -2em;
-            width: calc( 100% + 4em );
-            margin: 0 auto 5em;
-            min-height:max-content;
-            overflow:visible; 
-            display: inline-block;
-
+        font-size: 14px;
+        
+        margin-left: -3em;
         }
-        .imgcon {
-            display: inline-block;
-            /* width: calc( 100% + 4em ); */
-            height: fit-content;
-            width: 100%;
-            top: 0;
-
-            
-            
+        .herocon span.logo {
+            margin-left: 42px;
+            font-size: 16em;
+            mix-blend-mode: screen;
+            opacity: 85%;
+            color: var(--mainWhite);
         }
-        span.logo {
-            display: block;
-            position: relative;
-            font-size: 22em;
-            /* font-size: 24em; */
-            text-align: center;
-            margin-top: 1.5em;
+        .imgcon > p {
+            margin-right: 42px;
         }
-      
-        .imgcon > p { 
-            position: absolute;
-            font-size: 2em;
-            mix-blend-mode: normal;
-            opacity: 80%;
-            margin: 0 auto;
-            /* width: max-content; */
-            top: .5em;
-            width: 100%;
-            text-align: center;
-        }
-        .imgcon > img, .imgcon > div  {
-            /* width: calc(100% - .5em); */
-            right: 0;
-            background-color: unset;
-        }
-
     }
 
     @media screen and (max-width: 850px) { 
-        span.logo { 
+        .herocon span.logo  { 
             font-size: 16em;
+            display: block;
+            left: calc((100% - 591.37px) / 2);
+            margin-left: 0;
+            right: unset;
+        }
+        .imgcon > p { 
+            font-size: 1.75em;
+            right: calc((100% - 539.06px) / 2);
+            margin-right: 0;
+        }
+    }
+
+    @media screen and (max-width: 675px) { 
+        .herocon span.logo  { 
+            font-size: 12em;
+            left: calc((100% - 443.52px) / 2);
         }
         .imgcon > p { 
             font-size: 1.5em;
+            right: calc((100% - 462.06px) / 2);
         }
     }
 
     @media screen and (max-width: 600px) { 
-        span.logo { 
+        .herocon span.logo  { 
             font-size: 12em;
+            left: calc((100% - 443.523px) / 2);
+            margin-bottom: 6rem;
         }
         .imgcon > p { 
-            font-size: 1em;
-        }
-    }
-    @media screen and (max-width: 450px) { 
-        span.logo { 
-            font-size: 10em;
-        }
-        .imgcon > p { 
-            font-size: 1em;
+            font-size: 1.25em;
+            right: calc((100% - 385.05px) / 2);
         }
         .herocon {
-            margin: 0 auto;
-            min-height: unset;
+            margin-bottom: 0;
+        }
+    }
+    @media screen and (max-width: 500px) { 
+       
+        .herocon span.logo { 
+            font-size: 10em;
+            left: calc((100% - 369.6px) / 2);
+            margin-bottom: 4rem;
+        }
+        .imgcon > p { 
+            font-size: 1.25em;
+            right: calc((100% - 385.05px) / 2);
+        }
+    }
+
+    @media screen and (max-width: 425px) { 
+        .herocon span.logo { 
+            font-size: 8em;
+            left: calc((100% - 295.69px) / 2);
+        }
+        .imgcon > p { 
+            font-size: 1.15em;
+            right: calc((100% - 354.24px) / 2);
         }
     }
     @media screen and (max-width: 380px) { 
@@ -159,6 +179,7 @@
         }
         .imgcon > p { 
             font-size: 1em;
+            right: calc((100% - 308.04px) / 2);
         }
     }
 

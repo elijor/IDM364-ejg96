@@ -228,9 +228,17 @@
   }
 }
 
-    @media screen and (max-width: 420px) { 
+    @media screen and (max-width: 425px) { 
         button {
-            font-size: 24px;
+            font-size: 14px;
         }
+        .buttonHolder {
+          flex-direction: column;
+          align-items: center;
+          gap: 2em;
+        }
+        }
+        .quantity {
+          width: fit-content;
         }
 </style>

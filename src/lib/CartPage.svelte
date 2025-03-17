@@ -98,9 +98,6 @@ function updateRandomProducts() {
             updateRandomProducts();
         }
     }
-    
-    // Fetch products on component mount
-    // onMount(fetchProducts);
 
     </script>
 
@@ -242,6 +239,7 @@ function updateRandomProducts() {
         font-size: 3em;
         text-align: center;
         margin-bottom: 0;
+        z-index: 3;
     }
     h3 {
       font-family: "notoSansItalic";
@@ -608,10 +606,112 @@ function updateRandomProducts() {
     }
 
 
-    @media screen and (max-width: 420px) { 
-        button {
-            font-size: 24px;
+    @media screen and (max-width: 950px) { 
+        .cartCon {
+          flex-direction: column;
+        }
+        .cart-items {
+          width: 100%;
+        }
+        .cart-view {
+          width: 100%;
         }
         }
+
+        @media screen and (max-width: 675px) { 
+        .cartCon {
+          font-size: .85em;
+        }
+        .item-details {
+          width: 100%;
+          gap: 1rem;
+        }
+        .cart-item {
+          flex-direction: column;
+          padding-left: 12em;
+          gap: 1rem;
+          height: fit-content;
+        }
+        .cart-item .leftside  {
+          flex-direction: row-reverse;
+          align-items: center;
+          
+        }
+        .leftside button{
+          font-size: 12px;
+        }
+        .leftside .item-total {
+          font-size: 64px;
+        }
+        .item-details {
+          gap: 2rem;
+        }
+
+        .quantity-display, div.add button span {
+          font-size: 24px;
+        }
+        .cart-items {
+          gap: 3rem;
+        }
+      }
+      @media screen and (max-width: 550px) { 
+        .cart-item {
+          padding-left: 1.5em;
+          margin-top: 6rem;
+        }
+        .cart-item > img {
+          transform: rotate(90deg);
+          top: auto;
+          bottom: 50%;
+          /* right: calc((100vw - 400px) / 2 + 42px); */
+          right: 35%;
+          left: auto;
+          height: 90vw;
+        }
+      }
+
+      @media screen and (max-width: 460px) { 
+        .cart-item {
+          margin-top: 6rem;
+        }
+        .cart-item > img { 
+          bottom: 60%;
+        }
+        .cart-item .leftside {
+          flex-direction: column-reverse;
+          gap: 1rem;
+        }
+        .buttonHolder {
+          justify-content: center;
+        }
+        .cart-page {
+          width: 100%;
+        }
+      }
+      @media screen and (max-width: 425px) { 
+        .cart-item > img { 
+          bottom: 60%;
+        }
+      }
+
+      @media screen and (max-width: 400px) { 
+        .cart-item > img { 
+          bottom: 70%;
+        }
+        .cartCon {
+        
+          width: 90vw;
+          margin-left: -6.5vw;
+        }
+      }
+      @media screen and (max-width: 350px) { 
+        .cart-item > img { 
+          bottom: 70%;
+        }
+        .cartCon {
+          width: 90vw;
+          margin-left: calc(15vw / -2)
+        }
+      }
 
 </style>
